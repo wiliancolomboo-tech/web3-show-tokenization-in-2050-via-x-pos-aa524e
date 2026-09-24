@@ -1,0 +1,45 @@
+flowchart TD
+    subgraph Orbital_DePIN_Layer["Orbital DePIN Layer (Off-Chain Sensor Fabric)"]
+        Sensors["Orbital Array Array Sensors<br/>(Irradiance, Photovoltaic Health, Beam Efficiency)"]
+        Oracles["ZK-Telemetry Oracles<br/>(Signed Ed25519 State Attestations)"]
+        Sensors --> Oracles
+    end
+
+    subgraph Solana_State_Machine["Solana Core State Machine"]
+        GlobalConfig["Global Config PDA<br/>['global-config']<br/>Authority, Treasury, Protocol Version"]
+        OrbitalArrayPDA["Orbital Array PDA<br/>['orbital-array', array_id]<br/>Total Capacity (MWh), Active Units, Base Yield Rate"]
+        TelemetryStatePDA["Telemetry State PDA<br/>['telemetry', array_id]<br/>Photon Flux Index, Beam Angle, Degradation Delta"]
+        VaultTokenAcc["Yield Reserve Vault (Token-2022)<br/>['vault', array_id]<br/>Liquid USDC / Staked SOL Reserve"]
+        MintPDA["AstroGrid Token Mint (Token-2022)<br/>['mint', array_id]<br/>Extensions: TransferHook, InterestBearing"]
+    end
+
+    subgraph Token_2022_Extensions["Token-2022 Extensions Engine"]
+        TransferHookPDA["Transfer Hook PDA<br/>['extra-account-metas', mint]<br/>Enforces Debris Mitigation Burn"]
+        InterestBearingExt["Interest-Bearing Extension<br/>Dynamic Compounding APR based on Flux"]
+    end
+
+    subgraph Transactions_and_Instructions["Transactions & Instructions"]
+        IX_Init["initialize_array()"]
+        IX_Telemetry["attest_orbital_telemetry()"]
+        IX_StakeMint["fractionalize_energy_capacity()"]
+        IX_Harvest["claim_continuous_yield()"]
+        IX_TransferHook["execute_transfer_hook()"]
+    end
+
+    Oracles -->|Signed Attestation Tx| IX_Telemetry
+    IX_Telemetry -->|Verify Signer & Update Flux| TelemetryStatePDA
+    TelemetryStatePDA -->|Trigger CPI Rate Recalibration| InterestBearingExt
+
+    IX_Init -->|Derive Seeds & Create Accounts| GlobalConfig
+    IX_Init -->|Initialize PDA Mint| MintPDA
+    IX_Init -->|Configure Extension Metas| TransferHookPDA
+
+    IX_StakeMint -->|Lock Base Capital (USDC)| VaultTokenAcc
+    IX_StakeMint -->|Mint MWh Fractional Tokens| MintPDA
+
+    MintPDA -->|Transfer Action| IX_TransferHook
+    IX_TransferHook -->|Read Constraints| TransferHookPDA
+    IX_TransferHook -->|Deduct Orbital Levy| VaultTokenAcc
+
+    IX_Harvest -->|Calculate Accrued Ephemeral Index| VaultTokenAcc
+    VaultTokenAcc -->|Disburse Yield| UserRecipient["Off-Taker / Investor Wallet"]

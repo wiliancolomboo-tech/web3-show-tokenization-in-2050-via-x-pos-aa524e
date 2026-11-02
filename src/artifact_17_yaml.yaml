@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  aethergrid-relay:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aethergrid-ground-relay
+    restart: always
+    environment:
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+      - ENTERPRISE_AUDIT_EMAIL=${ENTERPRISE_AUDIT_EMAIL}
+    ports:
+      - "8080:8080"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"

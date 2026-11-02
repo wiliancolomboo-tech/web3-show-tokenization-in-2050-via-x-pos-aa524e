@@ -1,14 +1,10 @@
-# 1. Clone and navigate to workspace
-mkdir -p astrogrid-2050 && cd astrogrid-2050
+# 1. Clone repository & install dependencies
+git clone https://github.com/helios-2050/helios-protocol.git
+cd helios-protocol
+npm install
 
-# 2. Initialize project structure
-anchor init . --javascript false
-
-# 3. Configure local validator to support Token-2022
-solana config set --url localhost
-
-# 4. Build program and verify binary size
+# 2. Build Anchor Smart Contracts
 anchor build
 
-# 5. Launch Anchor Localnet Test Suite
+# 3. Execute Complete Test Matrix against local Solana test-validator
 anchor test

@@ -1,0 +1,18 @@
+┌───────────────────────────────────────┬────────────────────────────────────────────────────────┐
+│ Threat Vector                         │ Mitigation Strategy in HELIOS-2050                     │
+├───────────────────────────────────────┼────────────────────────────────────────────────────────┤
+│ 1. Telemetry Spoofing / Arbitrary Mint│ Hardened signer checks: `has_one = telemetry_oracle`    │
+│    (Sybil Energy Generation)          │ constrained directly on the GlobalRegistry state PDA.  │
+├───────────────────────────────────────┼────────────────────────────────────────────────────────┤
+│ 2. Sub-Slot Oracle Front-Running      │ Minimum `delta_seconds >= 1` enforced; accumulator uses│
+│                                       │ monotonically increasing timestamp constraints.        │
+├───────────────────────────────────────┼────────────────────────────────────────────────────────┤
+│ 3. Precision Loss & Math Overflow     │ Pure `u128` fixed-point math (`Q64.64`) with Anchor    │
+│                                       │ safe checking (`checked_add`, `checked_mul`).          │
+├───────────────────────────────────────┼────────────────────────────────────────────────────────┤
+│ 4. Reentrancy & Token Spoofing        │ Mint operations use PDA-signed CPI calls directly into │
+│                                       │ native Token-2022; no external untrusted calls.        │
+├───────────────────────────────────────┼────────────────────────────────────────────────────────┤
+│ 5. Account Substitution Attack        │ Exact address checks: `address = registry.energy_mint` │
+│                                       │ and `constraint = ata.mint == energy_mint.key()`.      │
+└───────────────────────────────────────┴────────────────────────────────────────────────────────┘

@@ -1,0 +1,16 @@
+FROM node:20-slim AS builder
+
+WORKDIR /usr/src/app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential python3 curl pkg-config libssl-dev git \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY package.json tsconfig.json ./
+RUN npm install
+
+COPY . .
+
+RUN npm run build || true
+
+CMD ["npx", "ts-node", "client/orchestrator.ts"]

@@ -1,0 +1,7 @@
+client/
+├── package.json
+├── tsconfig.json
+└── src/
+    ├── index.ts
+    ├── telemetry.ts
+    └── enterprise_notifier.ts

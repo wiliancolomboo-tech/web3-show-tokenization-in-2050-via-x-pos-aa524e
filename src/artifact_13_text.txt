@@ -1,0 +1,8 @@
+Why Solana? Orbital micro-bursts fire every 400ms. If money doesn’t settle at the speed of light, power defaults cascade.
+
+Helios-2050 leverages @Solana Token Extensions:
+⚡ Transfer Hooks calculate dynamic atmospheric ionization friction on each transfer
+⚡ Interest-Bearing Extensions rebase based on coronal solar flux
+⚡ Satellite Enclaves sign PDA mints directly from orbit
+
+Real DePIN. Real physics. On-chain SVM. [2/3]

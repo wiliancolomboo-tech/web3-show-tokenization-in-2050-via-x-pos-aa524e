@@ -1,0 +1,17 @@
++------------------------------+---------------------------------------+------------------------------------------+
+| Threat Vector                | Architectural Vulnerability           | HyperState 2050 Guard Implementation     |
++------------------------------+---------------------------------------+------------------------------------------+
+| 1. Oracle Spoofing           | Rogue keeper injecting false exajoules| Strict Pubkey comparison constraint:     |
+|                              | of physical energy generation.        | require_keys_eq!(facility.oracle_signer) |
+|                              |                                       | backed by ZK hardware signature receipts.|
++------------------------------+---------------------------------------+------------------------------------------+
+| 2. Reentrancy & Double-Mint  | Hook reentrancy via Token-2022 loops. | CEI (Checks-Effects-Interactions) order; |
+|                              |                                       | mutations to total_energy_produced occur |
+|                              |                                       | before external CPI dispatch.            |
++------------------------------+---------------------------------------+------------------------------------------+
+| 3. Temporal Replay Attack    | Replaying outdated telemetry batches. | Clock monotonic assertion:               |
+|                              |                                       | clock.unix_timestamp >= last_timestamp   |
++------------------------------+---------------------------------------+------------------------------------------+
+| 4. PDA Collision / Hijack    | Seed malleability in facility registry| Canonical PDA derivation with unique     |
+|                              |                                       | 128-bit hardware asset UUID slice.       |
++------------------------------+---------------------------------------+------------------------------------------+

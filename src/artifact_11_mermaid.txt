@@ -1,0 +1,5 @@
+> flowchart LR
+>   Satellite[LEO Array] -->|Ed25519 Packet| Solana[Solana Token-2022]
+>   Solana --> Yield[Fractional Yield Mint]
+>   Solana --> Hook[1.5% Biosphere Vault]
+>

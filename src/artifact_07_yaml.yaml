@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  chronogrid-telemetry-engine:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - AUTHORITY_KEYPAIR_PATH=/etc/chronogrid/authority.json
+      - ORACLE_KEYPAIR_PATH=/etc/chronogrid/oracle.json
+      - WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
+      - RESEND_API_KEY=re_123456789enterprise
+    volumes:
+      - ./keys:/etc/chronogrid:ro
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3

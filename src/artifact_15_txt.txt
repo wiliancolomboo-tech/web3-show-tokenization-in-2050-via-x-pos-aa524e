@@ -1,0 +1,9 @@
+Built for the future. Production-ready today.
+
+✅ 100% Rust / Anchor contract with rigorous test suites
+✅ Dockerized autonomous settlement daemon
+✅ Enterprise alerting via Resend & Discord webhooks
+
+Check out the full open-source repo & live architecture docs: https://github.com/helios-2050/core-settlement
+
+#Solana #Tokenization #DePIN #Web3 #Token2022

@@ -1,0 +1,31 @@
+flowchart TD
+    subgraph Space_Ground_IoT_Layer["Physical Infrastructure Layer (Year 2050)"]
+        Sat1["Orbital Solar Collector Node #771\n(Hardware Enclave / Ed25519 Keypair)"]
+        Sensors["Telemetry Subsystems\n(Watts Harvested, Terawatts Radiated, Temp)"]
+        Sensors -->|"Raw Metrics"| Sat1
+    end
+
+    subgraph Relayer_Gateway["Autonomous Decentralized Relayer Network"]
+        Sat1 -->|"Signed Telemetry Attestation Packet\n(Ed25519 Sig + Payload)"| Relayer["AETHER High-Speed Ingestion Relayer\n(Rust / Firedancer RPC Gateway)"]
+        Relayer --> AlertEngine["Enterprise Dispatch Service\n(Resend API / Discord Webhooks)"]
+    end
+
+    subgraph Solana_Runtime["Solana Blockchain (AETHER-2050 Program)"]
+        Relayer -->|"Tx: record_telemetry_and_stream_yield()"| Program["AETHER-2050 Anchor Engine\n(Program ID: Aeth2050...)"]
+        
+        subgraph Program_State["On-Chain Program Derived Accounts (PDAs)"]
+            AssetPDA["Asset Registry PDA\n- Status: Active/Decommissioned\n- Capacity: kW/h\n- Total Yield Generated\n- Last Heartbeat Slot"]
+            YieldPoolPDA["Yield Treasury Vault PDA\n- Token-2022 Yield Reserves"]
+            InvestorVault["Investor Share ATA\n- Fractional Yield Claims"]
+        end
+
+        Program -->|"1. Verify Enclave Signature & Heartbeat"| AssetPDA
+        Program -->|"2. Calculate Dynamic Yield Matrix"| YieldPoolPDA
+        YieldPoolPDA -->|"3. Stream Yield Tokens via CPI"| InvestorVault
+    end
+
+    subgraph Enterprise_Telemetry["Enterprise Monitoring & Investor Portals"]
+        AlertEngine -->|"Real-Time Critical Alert"| SlackWebhook["SecOps Discord/Slack Webhook"]
+        AlertEngine -->|"Institutional Dividend Statement"| ResendAPI["Resend Enterprise Email Service"]
+        InvestorVault -->|"Read-Time Fractional Balances"| Dashboard["Institutional Quantum/Web3 Terminals"]
+    end

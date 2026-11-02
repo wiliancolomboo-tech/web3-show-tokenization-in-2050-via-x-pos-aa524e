@@ -1,0 +1,9 @@
+How does tokenization work when your asset travels at the speed of light? 🛰️
+
+1/ Hardware enclaves on L1 Dyson mirrors sign beam emission metrics.
+2/ Net kWh tokens (ORB-kWh) mint sub-second on Solana via Token-2022.
+3/ SPL Transfer Hooks enforce an atomic 2.5% burn of verified Carbon Sink tokens (CARB-GT).
+
+Zero trust gap. Complete physical-to-digital continuity. 
+
+Code & Tests: Complete Anchor program with 100% test coverage.

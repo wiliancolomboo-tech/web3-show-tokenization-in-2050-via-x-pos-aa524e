@@ -1,0 +1,41 @@
+flowchart TD
+    subgraph Space_Layer [Orbital Telemetry & Energy Harvest (2050)]
+        Array[Dyson Swarm Array Node Alpha]
+        Sensor[Quantum Photonic Flux Sensors]
+        Enclave[Orbital HSM Hardware Security Module]
+        Array --> Sensor
+        Sensor --> Enclave
+    end
+
+    subgraph Relayer_Layer [Autonomous Dispatch Agent]
+        Agent[Helios-2050 Autonomous Node Daemon]
+        Validator[Ed25519 Telemetry Signature Verifier]
+        Enclave -- Encrypted Ku-Band Stream --> Agent
+        Agent --> Validator
+    end
+
+    subgraph Solana_L1 [Solana 2050 Core Network]
+        AnchorProg[Helios-2050 Core Program]
+        CollectorState[PDA: Collector Array Registry]
+        Mint[Token-2022: Q-FLUX Mint Engine]
+        TransferHook[PDA: Transfer Hook Planetary Tax]
+        GridEscrow[PDA: Earth Fusion Grid Escrow]
+
+        Validator -- Signed Instruction --> AnchorProg
+        AnchorProg --> CollectorState
+        AnchorProg -- Mint Ingested Energy --> Mint
+        Mint -- Transfer with Rules --> TransferHook
+        Mint -- Consumptive Power Draw --> GridEscrow
+    end
+
+    subgraph Earth_Enterprise [Terrestrial Consumption & Observability]
+        GridStation[Tokyo Hypergrid Receiving Station]
+        Alerts[Enterprise Webhook Router]
+        Resend[Resend Enterprise Alerting API]
+        Slack[Slack/Discord Grid Incident Webhooks]
+
+        GridEscrow -- Physical Energy Release --> GridStation
+        AnchorProg -- Emitted Telemetry Events --> Alerts
+        Alerts --> Resend
+        Alerts --> Slack
+    end

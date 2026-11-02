@@ -1,0 +1,7 @@
+{
+  "status": "HEALTHY",
+  "dyson_cluster": "0.3AU_SWARM_ALPHA",
+  "synced_slot": 312891928,
+  "circuit_breaker_active": false,
+  "last_telemetry_beam_latency_ms": 14.2
+}

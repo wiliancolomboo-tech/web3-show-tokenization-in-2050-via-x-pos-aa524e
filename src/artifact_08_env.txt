@@ -1,0 +1,7 @@
+SOLANA_RPC_URL=https://api.devnet.solana.com
+RESEND_API_KEY=re_123456789_enterprise_telemetry_key
+NOTIFY_EMAIL=bounty-judges@solana.org
+SLACK_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
+DISCORD_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
+CLUSTER_NAME=Lagrange-Swarm-Alpha
+COLLECTOR_ID=Collector-L1-Array-09

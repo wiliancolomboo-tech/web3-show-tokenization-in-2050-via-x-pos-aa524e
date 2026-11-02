@@ -1,0 +1,6 @@
+Physical energy can't wait for T+1 settlement.
+AETHER-2050 connects Ed25519 Hardware Enclaves inside orbital satellites directly to Solana:
+
+🛰️ Hardware signs raw MWh generation
+⚡ Deterministic Anchor engine verifies telemetry in <400ms
+🪙 SPL Token-2022 mints micro-$NRG credits directly to AI agents

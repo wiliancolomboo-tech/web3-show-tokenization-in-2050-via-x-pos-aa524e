@@ -1,0 +1,8 @@
+5/ Tokenization in 2050 isn't PDFs of sovereign debt on-chain. 
+
+It is the physical mechanics of the cosmos tokenized at light-speed.
+
+Check out the full open-source repo, architecture diagrams, and Anchor tests:
+github.com/sol2050-dyson-grid/core
+
+Built for the Solana 2050 Tokenization Bounty. 🚀

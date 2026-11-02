@@ -1,0 +1,24 @@
+FROM node:20-slim AS builder
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+COPY tsconfig.json ./
+RUN npm ci
+
+COPY client/ ./client/
+RUN npm run build
+
+FROM node:20-slim
+
+WORKDIR /usr/src/app
+COPY --from=builder /usr/src/app/node_modules ./node_modules
+COPY --from=builder /usr/src/app/dist ./dist
+COPY --from=builder /usr/src/app/package*.json ./
+
+ENV NODE_ENV=production
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:8080/health', (r) => {if (r.statusCode !== 200) process.exit(1);})"
+
+EXPOSE 8080
+CMD ["node", "dist/client/relayer_daemon.js"]

@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  aether-oracle-daemon:
+    build: .
+    restart: always
+    environment:
+      - ANCHOR_PROVIDER_URL=https://api.devnet.solana.com
+      - ANCHOR_WALLET=/secrets/id.json
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - ENTERPRISE_WEBHOOK_URL=${ENTERPRISE_WEBHOOK_URL}
+      - AUDIT_EMAIL_RECIPIENT=${AUDIT_EMAIL_RECIPIENT}
+    volumes:
+      - ./secrets/id.json:/secrets/id.json:ro
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"

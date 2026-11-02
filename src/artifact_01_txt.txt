@@ -1,18 +1,11 @@
-[ Orbital Photovoltaic Array ] 
-                     │  (Telemetry: Irradiance, Terawatt Output, Battery C-Rate)
-                     ▼
-       [ Autonomous Decentralized DePIN / ZK-Telemetry Oracles ]
-                     │  (Continuous State Attestation)
-                     ▼
-  ┌─────────────────────────────────────────────────────────────┐
-  │                 Solana Runtime (v2.x / Firedancer)           │
-  │  - AstroGrid Protocol Core (Anchor 0.30+)                   │
-  │  - Token-2022 Extensions:                                   │
-  │    * Transfer Hook (Orbital Orbital Debris/Carbon Tax)       │
-  │    * Interest-Bearing / Dynamic Yield Streaming (Continuous)│
-  │    * Metadata Pointer (Dynamic Orbital Telemetry)           │
-  └─────────────────────────────────────────────────────────────┘
-                     │
-     ┌───────────────┴───────────────┐
-     ▼                               ▼
-[ Industrial Off-Grid Off-Takers ]   [ Global Institutional Liquidity ]
+[ 2050 Dyson Constellation (Lagrange L1) ]
+                           │ (Telemetry Stream: MWh Harvested)
+                           ▼
+              [ Autonomous Edge Oracles ]
+                           │ (Ed25519 Signed Telemetry Payloads)
+                           ▼
+          [ Solana Mainnet: AETHER-2050 Engine ]
+    ┌──────────────────────┼──────────────────────┐
+    │                      │                      │
+[Energy Tranche Tokens]  [Yield Stream Vaults]  [Risk Circuit Breaker]
+  (SPL Token-2022)         (Transfer Hooks)       (Epoch Slashing)

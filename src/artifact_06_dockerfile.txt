@@ -1,0 +1,20 @@
+FROM node:20-slim AS runner
+
+WORKDIR /app
+
+# Install native dependencies for libudev & secp256k1/ed25519 bindings
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 \
+    build-essential \
+    ca-certificates \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY package.json tsconfig.json ./
+RUN npm install
+
+COPY . .
+
+EXPOSE 8080
+
+CMD ["npm", "run", "start:worker"]

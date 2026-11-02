@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  helios-telemetry-oracle:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: helios_oracle_daemon
+    restart: unless-stopped
+    environment:
+      - SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+      - OPERATIONAL_EMAIL_TARGET=${OPERATIONAL_EMAIL_TARGET}
+      - PORT=8080
+    ports:
+      - "8080:8080"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"

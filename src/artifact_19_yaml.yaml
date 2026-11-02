@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  helios-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: helios-2050-orchestrator
+    environment:
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - PROGRAM_ID=HeLios2050111111111111111111111111111111111
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - RESEND_SENDER=telemetry@helios2050.space
+      - OPERATOR_EMAIL=ops@orbital-energy-consortium.org
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

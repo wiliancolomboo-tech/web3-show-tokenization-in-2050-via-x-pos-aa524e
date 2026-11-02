@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  helios-telemetry-daemon:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: helios_2050_telemetry_engine
+    restart: always
+    environment:
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - PROGRAM_ID=HeLios2050DYsonSwarmGrid111111111111111111111
+      - SWARM_ID=2050
+      - ENTERPRISE_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
+      - RESEND_API_KEY=re_demo_key_9988776655
+      - OPS_ALERT_EMAIL=ops@helios2050.space
+    volumes:
+      - ./keys:/usr/src/app/keys:ro
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "5"

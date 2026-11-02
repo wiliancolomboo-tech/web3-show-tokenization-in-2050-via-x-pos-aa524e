@@ -1,0 +1,6 @@
+[programs.localnet]
+astral_rwa = "AstrL2050DysonSwarmPhotonicGrid1111111111111"
+
+[provider]
+cluster = "Localnet"
+wallet = "~/.config/solana/id.json"

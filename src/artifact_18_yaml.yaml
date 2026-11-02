@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  solaris-orchestrator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: solaris_telemetry_daemon
+    restart: always
+    environment:
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - SOLARIS_PROGRAM_ID=SoL2050DynAmicPhysicSTokenizationEngine11111
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+      - POLLING_INTERVAL_MS=3000
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"

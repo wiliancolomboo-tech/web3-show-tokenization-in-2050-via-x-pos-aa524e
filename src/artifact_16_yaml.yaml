@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  aetheris-ingestion-node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aetheris_planetary_agent
+    restart: always
+    environment:
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+      - PROGRAM_ID=AeTH5o1anA2o5oEnergyTokenEngine11111111111
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"

@@ -1,0 +1,8 @@
+{
+  "status": "HEALTHY",
+  "epoch": 2050,
+  "cluster": "solana-devnet-firedancer",
+  "activeDysonArrays": 1,
+  "lastTelemetrySync": "2050-08-14T03:14:07.128Z",
+  "zkEnclaveProofStatus": "VERIFIED"
+}

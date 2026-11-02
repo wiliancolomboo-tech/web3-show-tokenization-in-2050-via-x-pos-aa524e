@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  helios-telemetry-oracle:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: helios-2050-oracle
+    restart: unless-stopped
+    environment:
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - ORACLE_PRIVATE_KEY_JSON=[1,2,3...255]
+      - DISCORD_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
+      - RESEND_API_KEY=re_123456789abcdef
+      - REPORT_EMAIL=treasury@orbital-energy-2050.io
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "5"

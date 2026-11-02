@@ -1,0 +1,22 @@
+{
+  "name": "@solaris-2050/agent-cli",
+  "version": "1.0.0",
+  "description": "SOLARIS-2050 Telemetry Daemon and Enterprise Dispatcher",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.30.1",
+    "@solana/spl-token": "^0.4.8",
+    "@solana/web3.js": "^1.95.2",
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "resend": "^3.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "typescript": "^5.5.2"
+  }
+}

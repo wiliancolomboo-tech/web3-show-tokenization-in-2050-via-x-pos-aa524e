@@ -1,0 +1,21 @@
++----------------------------------------------------------------------------------------------------+
+|                                    SOLARIS-2050 SECURITY MATRIX                                    |
++------------------------------+---------------------------+-----------------------------------------+
+| ATTACK VECTOR                | SEVERITY LEVEL            | PRODUCTION MITIGATION ARCHITECTURE      |
++------------------------------+---------------------------+-----------------------------------------+
+| Synthetic Flux Injection     | CRITICAL (Risk of         | Hardware-anchored rectenna ZK proofs    |
+| (Oracle Spoofing)            | catastrophic inflation)   | verified against strict epoch sequence; |
+|                              |                           | hard bounds on maximum ±50% APR swing.  |
++------------------------------+---------------------------+-----------------------------------------+
+| Atmospheric Loss Bypass      | HIGH (Drainage of grid    | Token-2022 Transfer Hook enforced at    |
+|                              | maintenance treasury)     | mint level; transfers revert if fee     |
+|                              |                           | account is decoupled or manipulated.    |
++------------------------------+---------------------------+-----------------------------------------+
+| Reentrancy via CPI Hook      | HIGH (State corruption)   | Checks-Effects-Interactions pattern;    |
+|                              |                           | account mutations occur prior to CPI    |
+|                              |                           | invocations; PDA signer seeds locked.   |
++------------------------------+---------------------------+-----------------------------------------+
+| PDA Seed Collision           | MEDIUM                    | Explicit namespaced seeds               |
+|                              |                           | (b"solaris_grid_config", epoch bytes);  |
+|                              |                           | canonical bump enforcement on-chain.    |
++------------------------------+---------------------------+-----------------------------------------+

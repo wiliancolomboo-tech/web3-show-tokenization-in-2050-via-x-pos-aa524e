@@ -1,0 +1,10 @@
+{
+  "system": "Helios-2050 Autonomous Energy Pipeline",
+  "status": "HEALTHY",
+  "gridStatePda": "8vXG...helios_grid_state",
+  "activeOrbitalArrays": 42,
+  "epochYieldMwh": 412900,
+  "dampingCircuitStatus": "CLOSED_NOMINAL",
+  "solanaL1FinalityMs": 388,
+  "resendDispatchLatencyMs": 142
+}

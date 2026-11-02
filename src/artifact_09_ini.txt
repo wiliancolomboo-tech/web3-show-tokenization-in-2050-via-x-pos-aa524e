@@ -1,0 +1,5 @@
+SOLANA_RPC_URL="https://api.devnet.solana.com"
+PROGRAM_ID="HeLios2050OrbitaLEnergyTokeN2022Program1111"
+AUTHORITY_PRIVATE_KEY="[...json array...]"
+ORACLE_PRIVATE_KEY="[...json array...]"
+ENTERPRISE_WEBHOOK_URL="https://api.example.com/webhooks/alerts/placeholder"

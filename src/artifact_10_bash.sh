@@ -7,7 +7,7 @@ solana program deploy ./target/deploy/aether_2050.so \
   --url devnet
 
 # 3. Spin up Autonomous Relayer & Telemetry Engine
-export RESEND_API_KEY="re_live_enterpriseproof2050"
+export RESEND_API_KEY="re_test_000000000000000000000000"
 export DISCORD_WEBHOOK_URL="https://api.example.com/webhooks/alerts/placeholder"
 docker-compose up -d --build
 

@@ -1,5 +1,5 @@
 SOLANA_RPC_URL=https://api.devnet.solana.com
-RESEND_API_KEY=re_123456789_enterprise_telemetry_key
+RESEND_API_KEY=re_test_000000000000000000000000
 NOTIFY_EMAIL=bounty-judges@solana.org
 SLACK_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
 DISCORD_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
